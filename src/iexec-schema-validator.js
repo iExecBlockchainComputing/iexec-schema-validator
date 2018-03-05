@@ -1,8 +1,8 @@
-const Debug = require('debug');
+// const Debug = require('debug');
 const Joi = require('joi');
 const semver = require('semver');
 
-const debug = Debug('validate');
+// const debug = Debug('iexec-schema-validator');
 
 const myJoi = Joi.extend({
   base: Joi.string(),
@@ -13,7 +13,6 @@ const myJoi = Joi.extend({
   rules: [{
     name: 'semver',
     validate(params, value, state, options) {
-      debug('validate called', params, value, state, options);
       if (!semver.valid(value)) {
         return this.createError('string.semver', { v: value }, state, options);
       }
@@ -48,13 +47,11 @@ const fileDBSchema = Joi.object().keys({
 const validateGithub = (obj) => {
   const result = githubSchema.validate(obj);
   if (result.error) throw Error(result.error.details.map(e => e.message).join(' + '));
-  debug('result.error', result.error);
 };
 
 const validateFileDB = (obj) => {
   const result = fileDBSchema.validate(obj);
   if (result.error) throw Error(result.error.details.map(e => e.message).join(' + '));
-  debug('result.error', result.error);
 };
 
 module.exports = {
