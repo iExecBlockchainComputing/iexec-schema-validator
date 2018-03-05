@@ -47,11 +47,13 @@ const fileDBSchema = Joi.object().keys({
 const validateGithub = (obj) => {
   const result = githubSchema.validate(obj);
   if (result.error) throw Error(result.error.details.map(e => e.message).join(' + '));
+  return true;
 };
 
 const validateFileDB = (obj) => {
   const result = fileDBSchema.validate(obj);
   if (result.error) throw Error(result.error.details.map(e => e.message).join(' + '));
+  return true;
 };
 
 module.exports = {
