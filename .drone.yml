@@ -1,11 +1,9 @@
 pipeline:
   build:
-    image: node:9.6.0
+    image: node:6.4.0
     commands:
       - npm install
       - npm run build
-    when:
-      event: tag
 
   npm:
     image: plugins/npm
@@ -14,3 +12,4 @@ pipeline:
     email: sulliwane@gmail.com
     when:
       event: tag
+      branch: master
