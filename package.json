@@ -1,6 +1,6 @@
 {
   "name": "iexec-schema-validator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "validate data schema",
   "main": "dist/iexec-schema-validator.js",
   "scripts": {
