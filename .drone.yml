@@ -12,4 +12,3 @@ pipeline:
     email: sulliwane@gmail.com
     when:
       event: tag
-      branch: master
