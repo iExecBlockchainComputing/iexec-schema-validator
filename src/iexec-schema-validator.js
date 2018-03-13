@@ -33,6 +33,7 @@ const githubSchema = Joi.object({
   }).required(),
   chains: Joi.object(),
   social: Joi.object(),
+  work: Joi.string().required(),
   updatedAt: Joi.string().isoDate().required(),
 });
 
