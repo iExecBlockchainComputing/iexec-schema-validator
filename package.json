@@ -26,7 +26,8 @@
   },
   "dependencies": {
     "debug": "4.0.1",
-    "joi": "13.6.0"
+    "joi": "13.6.0",
+    "js-sha3": "^0.8.0"
   },
   "babel": {
     "presets": [
