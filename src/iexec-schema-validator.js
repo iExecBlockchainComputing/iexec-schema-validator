@@ -1,7 +1,27 @@
 const Debug = require('debug');
 const Joi = require('joi');
+const { isETHAddress } = require('./utils');
 
 const debug = Debug('iexec-schema-validator');
+
+const myJoi = Joi.extend({
+  base: Joi.string(),
+  name: 'string',
+  language: {
+    ethaddress: 'needs to be a valid ethereum address',
+  },
+  rules: [
+    {
+      name: 'ethaddress',
+      validate(params, value, state, options) {
+        if (!isETHAddress(value)) {
+          return this.createError('string.ethaddress', { v: value }, state, options);
+        }
+        return value;
+      },
+    },
+  ],
+});
 
 const baseSchema = Joi.object({
   type: Joi.string(),
@@ -15,7 +35,7 @@ const baseSchema = Joi.object({
     github: Joi.string(),
   }).required(),
   addresses: Joi.object(),
-  repo: Joi.string().required(),
+  repo: Joi.string(),
 });
 
 const dappSchema = baseSchema.append({
@@ -104,6 +124,21 @@ const walletConfSchema = Joi.object({
   address: Joi.string().required(),
 });
 
+const deployedObjSchema = Joi.object()
+  .pattern(
+    /^/,
+    myJoi
+      .string()
+      .ethaddress()
+      .required(),
+  )
+  .required();
+
+const deployedConfSchema = Joi.object().pattern(
+  /^(app|dataset|workerPool|work)$/i,
+  deployedObjSchema,
+);
+
 const validateObj = schema => (obj, { strict = true } = {}) => {
   const result = schema.validate(obj);
   if (result.error) {
@@ -123,4 +158,5 @@ module.exports = {
   validateChainsConf: validateObj(chainsConfSchema),
   validateAccountConf: validateObj(accountConfSchema),
   validateWalletConf: validateObj(walletConfSchema),
+  validateDeployedConf: validateObj(deployedConfSchema),
 };
