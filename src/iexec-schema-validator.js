@@ -103,6 +103,7 @@ const partnerSchema = registryEntrySchema.append({
 const chainConfSchema = Joi.object({
   host: Joi.string().required(),
   id: Joi.string().required(),
+  scheduler: Joi.string(),
   hub: Joi.string(),
 });
 
