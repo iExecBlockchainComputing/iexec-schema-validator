@@ -38,6 +38,14 @@ const baseSchema = Joi.object({
   repo: Joi.string(),
 });
 
+const orderBuySchema = Joi.object({
+  buy: Joi.object({
+    app: Joi.string().required(),
+    dataset: Joi.string().required(),
+    params: Joi.object().required(),
+  }).required(),
+});
+
 const dappSchema = baseSchema.append({
   license: Joi.string().required(),
   author: Joi.string().required(),
@@ -48,7 +56,7 @@ const dappSchema = baseSchema.append({
       .greater(-1),
     params: Joi.object().required(),
   }).required(),
-  order: Joi.object(),
+  order: orderBuySchema.required(),
 });
 
 const poolSchema = baseSchema.append({
