@@ -156,6 +156,7 @@ const chainConfSchema = Joi.object({
   host: Joi.string().required(),
   id: Joi.string().required(),
   hub: Joi.string(),
+  sms: Joi.string(),
 });
 
 const chainsConfSchema = Joi.object({
