@@ -157,6 +157,8 @@ const chainConfSchema = Joi.object({
   id: Joi.string().required(),
   hub: Joi.string(),
   sms: Joi.string(),
+  ipfsGateway: Joi.string(),
+  iexecGateway: Joi.string(),
 });
 
 const chainsConfSchema = Joi.object({
