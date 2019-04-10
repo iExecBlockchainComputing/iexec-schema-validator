@@ -86,6 +86,7 @@ const dappSchema = baseSchema.append({
 const datasetCompatibleDappSchema = Joi.object({
   name: Joi.string().required(),
   addresses: addressListSchema.required(),
+  buyConf: buyConfSchema,
 });
 
 const datasetSchema = baseSchema.append({
