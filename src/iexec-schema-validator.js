@@ -61,6 +61,7 @@ const buyConfSchema = Joi.object({
     .min(0)
     .max(Number.MAX_SAFE_INTEGER),
   tag: myJoi.string().bytes32(),
+  callback: myJoi.string().ethaddress(),
 });
 
 const dappSchema = baseSchema.append({
