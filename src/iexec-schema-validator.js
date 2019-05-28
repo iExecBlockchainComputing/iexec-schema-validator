@@ -1,5 +1,5 @@
 const Debug = require('debug');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 const { isETHAddress } = require('./utils');
 
 const debug = Debug('iexec-schema-validator');
