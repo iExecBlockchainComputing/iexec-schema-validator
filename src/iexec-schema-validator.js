@@ -54,9 +54,7 @@ const baseSchema = Joi.object({
 });
 
 const buyConfSchema = Joi.object({
-  params: Joi.object()
-    .pattern(/^/, Joi.string().allow(''))
-    .required(),
+  params: Joi.required(),
   trust: Joi.number()
     .min(0)
     .max(Number.MAX_SAFE_INTEGER),
