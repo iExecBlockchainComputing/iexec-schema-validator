@@ -159,6 +159,14 @@ const chainConfSchema = Joi.object({
   sms: Joi.string(),
   ipfsGateway: Joi.string(),
   iexecGateway: Joi.string(),
+  native: Joi.boolean(),
+  bridge: Joi.object({
+    bridgedNetworkId: Joi.string().required(),
+    contract: myJoi
+      .string()
+      .ethaddress()
+      .required(),
+  }),
 });
 
 const chainsConfSchema = Joi.object({
