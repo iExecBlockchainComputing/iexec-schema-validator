@@ -157,6 +157,7 @@ const chainConfSchema = Joi.object({
   id: Joi.string().required(),
   hub: Joi.string(),
   sms: Joi.string(),
+  resultProxy: Joi.string(),
   ipfsGateway: Joi.string(),
   iexecGateway: Joi.string(),
   native: Joi.boolean(),
