@@ -7,8 +7,9 @@ pipeline:
 
   npm:
     image: plugins/npm
-    secrets: [ npm_password ]
+    secrets: [npm_password]
     username: sulliwane
     email: sulliwane@gmail.com
+    tag: alpha
     when:
       event: tag
