@@ -28,7 +28,7 @@
     "prettier-eslint": "9.0.0"
   },
   "dependencies": {
-    "@hapi/joi": "^17.1.1",
+    "@hapi/joi": "^15.1.1",
     "debug": "4.1.1",
     "js-sha3": "0.8.0"
   },
